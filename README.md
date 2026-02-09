@@ -4,16 +4,7 @@ A serverless log ingestion and retrieval service built on AWS, deployed via AWS 
 
 ## Architecture
 
-```
-┌──────────┐  POST   ┌────────────────┐         ┌───────────┐
-│  Client  │────────▶│ Ingest Lambda  │────────▶│           │
-└──────────┘         └────────────────┘  PutItem │ DynamoDB  │
-                      (Function URL)             │ LogTable  │
-┌──────────┐  GET    ┌────────────────┐         │           │
-│  Client  │────────▶│ ReadRecent λ   │────────▶│  (GSI:    │
-└──────────┘         └────────────────┘  Query   │ DateTime) │
-                      (Function URL)             └───────────┘
-```
+![Architecture Diagram](docs/architecture.png)
 
 **Components:**
 - **DynamoDB** — `LogTable` with `DateTimeIndex` GSI for time-sorted queries (PAY_PER_REQUEST)
