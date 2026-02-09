@@ -199,6 +199,8 @@ The following are known limitations in the current implementation:
 
 ## Future Enhancements
 
+![Enhanced Architecture Diagram](docs/enhanced-architecture.png)
+
 **Dead Letter Queue (DLQ) for failed events:**
 - Add an SQS DLQ to both Lambda functions to capture failed invocations (up to 3 retries)
 - Failed DynamoDB writes due to throttling or transient errors would be retried automatically
